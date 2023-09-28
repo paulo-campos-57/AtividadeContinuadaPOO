@@ -5,7 +5,6 @@ import java.time.LocalDate;
 
 import br.gov.cesarschool.poo.bonusvendas.entidade.geral.Endereco;
 
-//teste eclipse
 public class Vendedor {
 	private String cpf;
 	private String nomeCompleto;
@@ -73,7 +72,6 @@ public class Vendedor {
 		this.endereco = endereco;
 	}
 
-	
 	public int calcularIdade(LocalDate dataAtual) {
 		Period periodo = Period.between(dataNascimento, dataAtual);
 		int idade = periodo.getYears();
