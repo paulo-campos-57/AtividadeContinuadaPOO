@@ -6,14 +6,14 @@ public class StringUtil {
 
 	}
 
+	/**
+	 * 
+	 * @param str
+	 * @return true se a string for nula ou tiver so com espaçoes em braqnco, caso
+	 *         contrario retorna false
+	 */
 	public static boolean ehNuloOuBranco(String str) {
-		if (str == null) {
-			return true;
-		} else {
-			/*
-			 * TODO verificar implementação de acordo com questão
-			 */
-			return false;
-		}
+
+		return str == null || str.trim().isEmpty();
 	}
 }
