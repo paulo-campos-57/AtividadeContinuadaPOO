@@ -9,11 +9,11 @@ public class ResultadoInclusaoVendedor {
 		this.numeroCaixaDeBonus = numeroCaixaDeBonus;
 		this.mensagemErroValidacao = mensagemErroValidacao;
 	}
-	
+
 	public long getnumeroVaixaDeBonus() {
 		return numeroCaixaDeBonus;
 	}
-	
+
 	public String getmensagemErroValidacao() {
 		return mensagemErroValidacao;
 	}
