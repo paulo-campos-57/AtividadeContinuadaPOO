@@ -13,7 +13,6 @@ public class StringUtil {
 	 *         contrario retorna false
 	 */
 	public static boolean ehNuloOuBranco(String str) {
-
 		return str == null || str.trim().isEmpty();
 	}
 }

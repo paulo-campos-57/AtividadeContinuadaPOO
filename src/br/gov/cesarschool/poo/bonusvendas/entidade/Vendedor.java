@@ -2,10 +2,11 @@ package br.gov.cesarschool.poo.bonusvendas.entidade;
 
 import java.time.Period;
 import java.time.LocalDate;
-
+import java.io.Serializable;
 import br.gov.cesarschool.poo.bonusvendas.entidade.geral.Endereco;
 
-public class Vendedor {
+public class Vendedor implements Serializable {
+	private static final long serialVersionUID = 1L; 
 	private String cpf;
 	private String nomeCompleto;
 	private String sexo;
