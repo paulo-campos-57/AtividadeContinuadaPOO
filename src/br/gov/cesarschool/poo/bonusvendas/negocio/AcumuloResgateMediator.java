@@ -5,14 +5,14 @@ public class AcumuloResgateMediator {
     private static AcumuloResgateMediator instance;
     
     // Atributos privados
-    private CaixaDeBonusDAO repositorioCaixaDeBonus;
-    private LancamentoBonusDAO repositorioLancamento;
+    //private CaixaDeBonusDAO repositorioCaixaDeBonus;
+    //private LancamentoBonusDAO repositorioLancamento;
     
     // Construtor privado
     private AcumuloResgateMediator() {
         // Inicializa os atributos com novas instâncias
-        repositorioCaixaDeBonus = new CaixaDeBonusDAO();
-        repositorioLancamento = new LancamentoBonusDAO();
+        //repositorioCaixaDeBonus = new CaixaDeBonusDAO();
+        //repositorioLancamento = new LancamentoBonusDAO();
     }
     
     // Método público para obter a instância única
