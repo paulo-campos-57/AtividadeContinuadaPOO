@@ -6,7 +6,7 @@ import java.io.Serializable;
 import br.gov.cesarschool.poo.bonusvendas.entidade.geral.Endereco;
 
 public class Vendedor implements Serializable {
-	private static final long serialVersionUID = 1L; 
+	private static final long serialVersionUID = 1L;
 	private String cpf;
 	private String nomeCompleto;
 	private String sexo;
