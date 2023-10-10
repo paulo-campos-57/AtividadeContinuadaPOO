@@ -1,5 +1,11 @@
 package br.gov.cesarschool.poo.bonusvendas.negocio;
 
+import java.time.LocalDate;
+
+import br.gov.cesarschool.poo.bonusvendas.dao.CaixaDeBonusDAO;
+import br.gov.cesarschool.poo.bonusvendas.dao.LancamentoBonusDAO;
+import br.gov.cesarschool.poo.bonusvendas.entidade.CaixaDeBonus;
+
 //import java.time.LocalDate;
 
 //import br.gov.cesarschool.poo.bonusvendas.dao.CaixaDeBonusDAO;
@@ -7,20 +13,21 @@ package br.gov.cesarschool.poo.bonusvendas.negocio;
 //import br.gov.cesarschool.poo.bonusvendas.entidade.CaixaDeBonus;
 import br.gov.cesarschool.poo.bonusvendas.entidade.TipoResgate;
 //import br.gov.cesarschool.poo.bonusvendas.entidade.Vendedor;
+import br.gov.cesarschool.poo.bonusvendas.entidade.Vendedor;
 
 public class AcumuloResgateMediator {
 	// Instância única da classe (Singleton)
 	private static AcumuloResgateMediator instance;
 
 //     Atributos privados
-//	private CaixaDeBonusDAO repositorioCaixaDeBonus;
-//	private LancamentoBonusDAO repositorioLancamento;
+	private CaixaDeBonusDAO repositorioCaixaDeBonus;
+	private LancamentoBonusDAO repositorioLancamento;
 
 	// Construtor privado
 	private AcumuloResgateMediator() {
 		// Inicializa os atributos com novas instâncias
-//		repositorioCaixaDeBonus = new CaixaDeBonusDAO();
-//		repositorioLancamento = new LancamentoBonusDAO();
+		repositorioCaixaDeBonus = new CaixaDeBonusDAO();
+		repositorioLancamento = new LancamentoBonusDAO();
 	}
 
 	/***
@@ -28,29 +35,29 @@ public class AcumuloResgateMediator {
 	 * 
 	 * @return
 	 */
-	public static AcumuloResgateMediator getInstance() {
+	public static AcumuloResgateMediator getInstancia() {
 		if (instance == null) {
 			instance = new AcumuloResgateMediator();
 		}
 		return instance;
 	}
 
-//	public long gerarCaixaDeBonus(Vendedor vendedor) {
-//		if (vendedor == null) {
-//			return 0; // Retorna zero se o vendedor for nulo
-//		}
-//
-//		LocalDate dataAtual = LocalDate.now();
-//		String numeroCaixaDeBonus = vendedor.getCpf() + String.format("%04d%02d%02d", dataAtual.getYear(),
-//				dataAtual.getMonthValue(), dataAtual.getDayOfMonth());
-//
-//		CaixaDeBonus caixaDeBonus = new CaixaDeBonus(Long.parseLong(numeroCaixaDeBonus));
-//		if (repositorioCaixaDeBonus.adicionarCaixaDeBonus(caixaDeBonus)) {
-//			return Long.parseLong(numeroCaixaDeBonus);
-//		} else {
-//			return 0; // Retorna zero se a caixa de bônus não for incluída no repositório
-//		}
-//	}
+	public long gerarCaixaDeBonus(Vendedor vendedor) {
+		if (vendedor == null) {
+			return 0; // Retorna zero se o vendedor for nulo
+		}
+
+		LocalDate dataAtual = LocalDate.now();
+		String numeroCaixaDeBonus = vendedor.getCpf() + String.format("%04d%02d%02d", dataAtual.getYear(),
+				dataAtual.getMonthValue(), dataAtual.getDayOfMonth());
+
+		CaixaDeBonus caixaDeBonus = new CaixaDeBonus(Long.parseLong(numeroCaixaDeBonus));
+		if (repositorioCaixaDeBonus.incluir(caixaDeBonus)) {
+			return Long.parseLong(numeroCaixaDeBonus);
+		} else {
+			return 0; // Retorna zero se a caixa de bônus não for incluída no repositório
+		}
+	}
 
 	public String acumularBonus(long numeroCaixaDeBonus, double valor) {
 		if (valor <= 0) {

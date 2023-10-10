@@ -10,11 +10,11 @@ public class ResultadoInclusaoVendedor {
 		this.mensagemErroValidacao = mensagemErroValidacao;
 	}
 
-	public long getnumeroVaixaDeBonus() {
+	public long getNumeroCaixaDeBonus() {
 		return numeroCaixaDeBonus;
 	}
 
-	public String getmensagemErroValidacao() {
+	public String getMensagemErroValidacao() {
 		return mensagemErroValidacao;
 	}
 }

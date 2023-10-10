@@ -30,7 +30,7 @@ public class VendedorDAO {
 	}
 
 	public Vendedor buscar(String string) {
-		// Esta operação entre () vai ter significado mais à frente!
+		
 		return (Vendedor) cadastro.buscar(BRANCO + string);
 	}
 
@@ -38,7 +38,6 @@ public class VendedorDAO {
 		Serializable[] rets = cadastro.buscarTodos(Vendedor.class);
 		Vendedor[] prods = new Vendedor[rets.length];
 		for (int i = 0; i < rets.length; i++) {
-			// Esta operação entre () vai ter significado mais à frente!
 			prods[i] = (Vendedor) rets[i];
 		}
 		return prods;

@@ -10,7 +10,7 @@ public class LancamentoBonusDebito extends LancamentoBonus {
 		super(numeroCaixaDeBonus, valor, dataHoraLancamento);
 	}
 
-	public TipoResgate getTipo() {
+	public TipoResgate getTipoResgate() {
 		return tipo;
 	}
 

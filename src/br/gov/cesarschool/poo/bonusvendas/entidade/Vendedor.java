@@ -4,17 +4,18 @@ import java.time.Period;
 import java.time.LocalDate;
 import java.io.Serializable;
 import br.gov.cesarschool.poo.bonusvendas.entidade.geral.Endereco;
+import br.gov.cesarschool.poo.bonusvendas.entidade.geral.Sexo;
 
 public class Vendedor implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String cpf;
 	private String nomeCompleto;
-	private String sexo;
+	private Sexo sexo;
 	private LocalDate dataNascimento;
 	private double renda;
 	private Endereco endereco;
 
-	public Vendedor(String cpf, String nomeCompleto, String sexo, LocalDate dataNascimento, double renda,
+	public Vendedor(String cpf, String nomeCompleto, Sexo sexo, LocalDate dataNascimento, double renda,
 			Endereco endereco) {
 		super();
 		this.cpf = cpf;
@@ -41,11 +42,11 @@ public class Vendedor implements Serializable {
 		this.nomeCompleto = nomeCompleto;
 	}
 
-	public String getSexo() {
+	public Sexo getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(String sexo) {
+	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
 	}
 
@@ -73,7 +74,8 @@ public class Vendedor implements Serializable {
 		this.endereco = endereco;
 	}
 
-	public int calcularIdade(LocalDate dataAtual) {
+	public int calcularIdade() {
+		LocalDate dataAtual = LocalDate.now();
 		Period periodo = Period.between(dataNascimento, dataAtual);
 		int idade = periodo.getYears();
 		return idade;

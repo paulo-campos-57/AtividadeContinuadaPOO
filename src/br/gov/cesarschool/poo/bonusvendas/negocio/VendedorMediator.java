@@ -15,18 +15,49 @@ public class VendedorMediator {
 
 	private VendedorMediator() {
 		repositorioVendedor = new VendedorDAO();
-		caixaDeBonusMediator = AcumuloResgateMediator.getInstance();
+		caixaDeBonusMediator = AcumuloResgateMediator.getInstancia();
 	}
 
 	/***
 	 * 
 	 * @return A instância única da classe VendedorMediator.
 	 */
-	public static VendedorMediator getInstance() {
+	public static VendedorMediator getInstancia() {
 		if (instance == null) {
 			instance = new VendedorMediator();
 		}
 		return instance;
+	}
+
+	/*
+	 * FALTA TERMINAR ESSA FUNCAO, nao eh pra ser com o vendedor na linha 44, o numerocaixadebonus ta no ResultadoInclusaoVendedor
+	 */
+	public ResultadoInclusaoVendedor incluir(Vendedor vendedor) {
+		String validacao = validar(vendedor);
+
+		if (validacao != null) {
+			// Se algum dado estiver inválido
+			return new ResultadoInclusaoVendedor(0, validacao);
+		} else {
+			// Se os dados estiverem válidos
+			long numeroCaixaBonus = caixaDeBonusMediator.gerarCaixaDeBonus(vendedor);
+//			vendedor.set(numeroCaixaBonus);
+			repositorioVendedor.incluir(vendedor);
+			return new ResultadoInclusaoVendedor(numeroCaixaBonus, null);
+		}
+	}
+
+	public String alterar(Vendedor vendedor) {
+		String validacao = validar(vendedor);
+
+		if (validacao != null) {
+			// Se algum dado estiver inválido
+			return validacao;
+		} else {
+			// Se os dados estiverem válidos
+			repositorioVendedor.alterar(vendedor);
+			return null;
+		}
 	}
 
 	/***
@@ -96,8 +127,8 @@ public class VendedorMediator {
 		return null; // Retorna null se todos os dados estiverem válidos
 	}
 
-//	public Vendedor buscar(String cpf) {
-//		return repositorioVendedor.buscarVendedor(cpf);
-//	}
+	public Vendedor buscar(String cpf) {
+		return repositorioVendedor.buscar(cpf);
+	}
 
 }
