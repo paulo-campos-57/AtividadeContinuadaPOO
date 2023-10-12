@@ -70,7 +70,7 @@ public class VendedorMediator {
 			return "Vendedor é nulo.";
 		}
 
-		if (!ValidadorCPF.ehCpfValidado(vendedor.getCpf())) {
+		if (!ValidadorCPF.ehCpfValido(vendedor.getCpf())) {
 			return "CPF inválido.";
 		}
 
