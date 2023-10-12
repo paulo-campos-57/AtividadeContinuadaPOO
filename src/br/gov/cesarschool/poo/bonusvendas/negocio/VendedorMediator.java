@@ -74,9 +74,9 @@ public class VendedorMediator {
 			return "CPF inválido.";
 		}
 
-		if (StringUtil.ehNuloOuBranco(vendedor.getNomeCompleto())) {
-			return "Nome completo não informado.";
-		}
+//		if (StringUtil.ehNuloOuBranco(vendedor.get())) {
+//			return "Nome completo não informado.";
+//		}
 
 		if (vendedor.getSexo() == null) {
 			return "Sexo não informado.";

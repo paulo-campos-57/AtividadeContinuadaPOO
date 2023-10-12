@@ -6,10 +6,10 @@ import java.time.LocalDateTime;
 public class LancamentoBonus implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long numeroCaixaDeBonus;
-	private int valor;
+	private double valor;
 	private LocalDateTime dataHoraLancamento;
 
-	public LancamentoBonus(long numeroCaixaDeBonus, int valor, LocalDateTime dataHoraLancamento) {
+	public LancamentoBonus(long numeroCaixaDeBonus, double valor, LocalDateTime dataHoraLancamento) {
 		super();
 		this.numeroCaixaDeBonus = numeroCaixaDeBonus;
 		this.valor = valor;
@@ -20,7 +20,7 @@ public class LancamentoBonus implements Serializable {
 		return numeroCaixaDeBonus;
 	}
 
-	public int getValor() {
+	public double getValor() {
 		return valor;
 	}
 

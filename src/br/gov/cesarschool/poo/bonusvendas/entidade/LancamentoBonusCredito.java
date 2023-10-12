@@ -4,7 +4,12 @@ import java.time.LocalDateTime;
 
 public class LancamentoBonusCredito extends LancamentoBonus {
 
-	public LancamentoBonusCredito(long numeroCaixaDeBonus, int valor, LocalDateTime dataHoraLancamento) {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public LancamentoBonusCredito(long numeroCaixaDeBonus, double valor, LocalDateTime dataHoraLancamento) {
 		super(numeroCaixaDeBonus, valor, dataHoraLancamento);
 	}
 

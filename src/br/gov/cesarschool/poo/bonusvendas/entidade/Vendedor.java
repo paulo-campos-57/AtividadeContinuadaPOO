@@ -34,10 +34,6 @@ public class Vendedor implements Serializable {
 		this.cpf = cpf;
 	}
 
-	public String getNomeCompleto() {
-		return nomeCompleto;
-	}
-
 	public void setNomeCompleto(String nomeCompleto) {
 		this.nomeCompleto = nomeCompleto;
 	}
