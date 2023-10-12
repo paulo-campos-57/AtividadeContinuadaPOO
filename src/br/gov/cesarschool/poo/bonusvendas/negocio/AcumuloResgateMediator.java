@@ -1,10 +1,12 @@
 package br.gov.cesarschool.poo.bonusvendas.negocio;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import br.gov.cesarschool.poo.bonusvendas.dao.CaixaDeBonusDAO;
 import br.gov.cesarschool.poo.bonusvendas.dao.LancamentoBonusDAO;
 import br.gov.cesarschool.poo.bonusvendas.entidade.CaixaDeBonus;
+import br.gov.cesarschool.poo.bonusvendas.entidade.LancamentoBonusCredito;
 
 //import java.time.LocalDate;
 
@@ -63,17 +65,22 @@ public class AcumuloResgateMediator {
 		if (valor <= 0) {
 			return "Valor menor ou igual a zero";
 		}
-//
-//	    CaixaDeBonus caixaDeBonus = repositorioCaixaDeBonus.buscarCaixaDeBonus(numeroCaixaDeBonus);
-//	    if (caixaDeBonus == null) {
-//	        return "Caixa de bonus inexistente";
-//	    }
-//
-//	    caixaDeBonus.creditar(valor); // Usando o método creditar da CaixaDeBonus
-//	    repositorioCaixaDeBonus.atualizarCaixaDeBonus(caixaDeBonus);
-//
-//	    LancamentoBonusCredito lancamentoCredito = new LancamentoBonusCredito(caixaDeBonus, valor);
-//	    repositorioLancamento.incluirLancamento(lancamentoCredito);
+
+		CaixaDeBonus caixaDeBonus = repositorioCaixaDeBonus.buscar(numeroCaixaDeBonus);
+		if (caixaDeBonus == null) {
+			return "Caixa de bônus inexistente";
+		}
+
+		caixaDeBonus.creditar(valor);
+		repositorioCaixaDeBonus.alterar(caixaDeBonus);
+
+		// Obtenha a data e hora do lançamento
+		LocalDateTime dataHoraLancamento = LocalDateTime.now();
+
+		// Crie um novo lançamento de bônus com a data e hora do lançamento
+		LancamentoBonusCredito lancamentoCredito = new LancamentoBonusCredito(numeroCaixaDeBonus, valor,
+				dataHoraLancamento);
+		repositorioLancamento.incluir(lancamentoCredito);
 
 		return null;
 	}
@@ -83,18 +90,18 @@ public class AcumuloResgateMediator {
 			return "Valor menor ou igual a zero";
 		}
 
-//		CaixaDeBonus caixaDeBonus = repositorioCaixaDeBonus.buscarCaixaDeBonus(numeroCaixaDeBonus);
-//		if (caixaDeBonus == null) {
-//			return "Caixa de bonus inexistente";
-//		}
-//
-//		if (caixaDeBonus.getSaldo() < valor) {
-//			return "Saldo insuficiente";
-//		}
-//
-//		caixaDeBonus.debitar(valor); // Usando o método debitar da CaixaDeBonus
-//		repositorioCaixaDeBonus.atualizarCaixaDeBonus(caixaDeBonus);
-//
+		CaixaDeBonus caixaDeBonus = repositorioCaixaDeBonus.buscar(numeroCaixaDeBonus);
+		if (caixaDeBonus == null) {
+			return "Caixa de bonus inexistente";
+		}
+
+		if (caixaDeBonus.getSaldo() < valor) {
+			return "Saldo insuficiente";
+		}
+
+		caixaDeBonus.debitar(valor); // Usando o método debitar da CaixaDeBonus
+		repositorioCaixaDeBonus.alterar(caixaDeBonus);
+
 //		LancamentoBonusResgate lancamentoResgate = new LancamentoBonusResgate(caixaDeBonus, valor, tipo);
 //		repositorioLancamento.incluirLancamento(lancamentoResgate);
 
